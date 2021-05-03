@@ -33,10 +33,8 @@ public class HasAuthorService {
     public HasAuthor updateHasAuthor(HasAuthor newHasAuthor, Long id){
         return hasAuthorRepository.findById(id)
                 .map(hasAuthor -> {
-                    //hasAuthor.setAuthor(newHasAuthor.getAuthor());
-                    //return hasAuthorRepository.save(hasAuthor);
-                    hasAuthorRepository.delete(hasAuthor);
-                    return hasAuthorRepository.save(newHasAuthor);
+                    hasAuthor.setAuthor(newHasAuthor.getAuthor());
+                    return hasAuthorRepository.save(hasAuthor);
                 })
                 .orElseGet(()->{
                     newHasAuthor.setId(id);

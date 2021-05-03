@@ -36,8 +36,10 @@ public class BlogService {
     public Blog updateBlog(Blog newBlog, Long id){
         return blogRepository.findById(id)
                 .map(blog -> {
-                    blogRepository.delete(blog);
-                    return blogRepository.save(newBlog);
+                    blog.setTitle(newBlog.getTitle());
+                    blog.getPosts().clear();
+                    blog.getPosts().addAll(newBlog.getPosts());
+                    return blogRepository.save(blog);
                 })
                 .orElseGet(()->{
                    newBlog.setId(id);

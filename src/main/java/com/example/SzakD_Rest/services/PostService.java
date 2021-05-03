@@ -2,12 +2,14 @@ package com.example.SzakD_Rest.services;
 
 
 import com.example.SzakD_Rest.entities.Blog;
+import com.example.SzakD_Rest.entities.Comment;
 import com.example.SzakD_Rest.entities.Post;
 import com.example.SzakD_Rest.exceptions.NotFoundEntityException;
 import com.example.SzakD_Rest.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,8 +37,11 @@ public class PostService {
     public Post updateBlog(Post newPost, Long id){
         return postRepository.findById(id)
                 .map(post -> {
-                    postRepository.delete(post);
-                    return postRepository.save(newPost);
+                    post.setContent(newPost.getContent());
+                    post.setTitle(newPost.getTitle());
+                    post.getComments().clear();
+                    post.getComments().addAll(newPost.getComments());
+                    return postRepository.save(post);
                 })
                 .orElseGet(()->{
                     newPost.setId(id);
