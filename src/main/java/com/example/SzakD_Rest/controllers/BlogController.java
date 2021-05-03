@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 public class BlogController {
 
-	BlogService blogService;
+	private final BlogService blogService;
 
 	
 	BlogController(BlogService b){

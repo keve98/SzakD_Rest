@@ -33,9 +33,11 @@ public class CommentService{
     public Comment updateComment(Comment newComment, Long id){
         return commentRepository.findById(id)
                 .map(comment -> {
-                    comment.setContent(newComment.getContent());
-                    comment.setAuthor(newComment.getAuthor());
-                    return commentRepository.save(comment);
+                    //comment.setContent(newComment.getContent());
+                    //comment.setAuthor(newComment.getAuthor());
+                    //return commentRepository.save(comment);
+                    commentRepository.delete(comment);
+                    return commentRepository.save(newComment);
                 })
                 .orElseGet(()->{
                     newComment.setId(id);
