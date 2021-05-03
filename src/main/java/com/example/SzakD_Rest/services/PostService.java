@@ -35,10 +35,8 @@ public class PostService {
     public Post updateBlog(Post newPost, Long id){
         return postRepository.findById(id)
                 .map(post -> {
-                    post.setComments(newPost.getComments());
-                    post.setTitle(newPost.getTitle());
-                    post.setContent(newPost.getContent());
-                    return postRepository.save(post);
+                    postRepository.delete(post);
+                    return postRepository.save(newPost);
                 })
                 .orElseGet(()->{
                     newPost.setId(id);
@@ -46,8 +44,4 @@ public class PostService {
                 });
 
     }
-
-
-
-
 }

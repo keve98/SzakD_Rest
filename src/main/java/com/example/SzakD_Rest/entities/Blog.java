@@ -1,8 +1,8 @@
 package com.example.SzakD_Rest.entities;
 
 
-import java.util.List;
 
+import java.util.*;
 import javax.persistence.*;
 
 
@@ -38,12 +38,4 @@ public class Blog {
 		return posts;
 	}
 
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
-	}
-
-	public String toString(){
-		return "["+this.Id+"] " + this.getTitle();
-	}
-	
 }

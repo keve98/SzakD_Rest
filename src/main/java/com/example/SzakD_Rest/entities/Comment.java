@@ -26,11 +26,5 @@ public class Comment extends HasAuthor{
 
 	public void setId(Long id) {
 		Id = id;
-	} 
-	
-	@Override
-	public String toString() {
-		return "Comment:	 " + this.content;
-		
 	}
 }

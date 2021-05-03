@@ -36,14 +36,12 @@ public class BlogService {
     public Blog updateBlog(Blog newBlog, Long id){
         return blogRepository.findById(id)
                 .map(blog -> {
-                    blog.setTitle(newBlog.getTitle());
-                    blog.setPosts(newBlog.getPosts());
-                    return blogRepository.save(blog);
+                    blogRepository.delete(blog);
+                    return blogRepository.save(newBlog);
                 })
                 .orElseGet(()->{
                    newBlog.setId(id);
                    return blogRepository.save(newBlog);
                 });
-
     }
 }

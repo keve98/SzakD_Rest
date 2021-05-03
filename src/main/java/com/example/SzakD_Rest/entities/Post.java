@@ -31,16 +31,12 @@ public class Post extends HasAuthor{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
 
 	public List<Comment> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
-	
+
 	public Long getId() {
 		return Id;
 	}

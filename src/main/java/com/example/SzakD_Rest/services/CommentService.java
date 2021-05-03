@@ -41,17 +41,5 @@ public class CommentService{
                     newComment.setId(id);
                     return commentRepository.save(newComment);
                 });
-
     }
-
-   /* public String listToString(List<Comment> comments){
-        String result ="";
-        for(Comment c: comments){
-            result += c.toString();
-            result += "\n";
-        }
-        return result;
-    }*/
-
-
 }

@@ -40,7 +40,5 @@ public class HasAuthorService {
                     newHasAuthor.setId(id);
                     return hasAuthorRepository.save(newHasAuthor);
                 });
-
     }
-
 }
