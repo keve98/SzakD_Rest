@@ -1,6 +1,6 @@
 package com.example.SzakD_Rest.entities;
 
-
+import com.sun.xml.bind.v2.runtime.reflect.Lister;
 
 import java.util.*;
 import javax.persistence.*;
@@ -34,7 +34,11 @@ public class Blog {
 		this.title = title;
 	}
 
+
 	public List<Post> getPosts() {
+		if(posts == null){
+			posts = new ArrayList<Post>();
+		}
 		return posts;
 	}
 

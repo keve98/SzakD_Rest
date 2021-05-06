@@ -33,6 +33,9 @@ public class Post extends HasAuthor{
 	}
 
 	public List<Comment> getComments() {
+		if(comments == null){
+			comments = new ArrayList<Comment>();
+		}
 		return comments;
 	}
 
