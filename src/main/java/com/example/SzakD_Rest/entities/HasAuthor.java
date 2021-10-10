@@ -10,6 +10,10 @@ public class HasAuthor {
 	@GeneratedValue
 	private Long Id;
 	private String author;
+
+	public HasAuthor(){
+		author = "";
+	}
 	
 
 	public Long getId() {

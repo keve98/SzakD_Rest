@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Comments</title>
+    <h:button value="Blog" outcome="#{request.contextPath}/Blog/listBlog.xhtml"/>
+    <h:button value="Author" outcome="#{request.contextPath}/Author/listAuthor.xhtml"/>
+    <h:button value="Post" outcome="#{request.contextPath}/Post/listPost.xhtml"/>
+
+</h:head>
+
+<h:body>
+        <p>Comment: </p>
+    <h:form id="form">
+        <h:button value="New" id="new" outcome="newComment.xhtml"></h:button>
+        <h:dataTable id="table" var="comment" value="#{commentService.allComments}">
+        <h:column>
+            <f:facet name="header">Content</f:facet>
+            <h:outputText value="#{comment.content}" />
+        </h:column>
+            <h:column>
+                <f:facet name="header">Author</f:facet>
+                <h:outputText value="#{comment.author}" />
+            </h:column>
+        <h:column>
+            <h:commandButton value="Delete" id="delete" action="#{commentService.deleteComment(comment.id)}"/>
+        </h:column>
+            <h:column>
+                <h:commandButton value="Edit" id="edit" action="#{commentService.setCommentToEdit(comment.id)}"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    <h:button value="Back" outcome="#{request.contextPath}/index.xhtml"/>
+</h:body>
+</html>

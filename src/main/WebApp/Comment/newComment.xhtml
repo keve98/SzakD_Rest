@@ -1,0 +1,29 @@
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>New comment</title>
+</h:head>
+
+
+<h:body>
+    <p>Add new comment</p>
+<h:form>
+    <h:dataTable id="table" var="comment" value="#{commentService.comment}">
+        <h:column>
+            <f:facet name="header">Content</f:facet>
+            <h:inputText value="#{comment.content}" />
+        </h:column>
+        <h:column>
+            <f:facet name = "header">Author</f:facet>
+            <h:inputText value="#{comment.author}"></h:inputText>
+        </h:column>
+        <h:column>
+            <h:commandButton value="Save" id="save" action="#{commentService.newComment(comment)}"/>
+        </h:column>
+    </h:dataTable>
+    <h:button value="Back" outcome="listComment.xhtml"/>
+</h:form>
+
+</h:body>
+</html>

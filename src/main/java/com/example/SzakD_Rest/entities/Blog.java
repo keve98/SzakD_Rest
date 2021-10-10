@@ -1,12 +1,15 @@
 package com.example.SzakD_Rest.entities;
 
-import com.sun.xml.bind.v2.runtime.reflect.Lister;
 
 import java.util.*;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
 
 
 @Entity
+@SessionScoped
+@ManagedBean(name="blogEntity")
 public class Blog {
 
 	@Id
@@ -14,8 +17,13 @@ public class Blog {
 	private Long Id;
 	
 	private String title;
-	@OneToMany
+
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	private List<Post> posts;
+
+	public Blog(){
+		this.title = "";
+	}
 
 
 	public Long getId() {
@@ -41,5 +49,4 @@ public class Blog {
 		}
 		return posts;
 	}
-
 }

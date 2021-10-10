@@ -1,26 +1,52 @@
 package com.example.SzakD_Rest.services;
 
-import com.example.SzakD_Rest.entities.Blog;
+
 import com.example.SzakD_Rest.entities.Comment;
 import com.example.SzakD_Rest.exceptions.NotFoundEntityException;
 import com.example.SzakD_Rest.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
+@ManagedBean(name = "commentService", eager = true)
+@ViewScoped
 public class CommentService{
 
     private final CommentRepository commentRepository;
 
+    public Comment comment = new Comment();
+
+    public String setCommentToEdit(Long id) {
+        this.comment = findById(id);
+        return "editComment.xhtml";
+    }
+
+    public Comment getComment() {
+        return comment;
+    }
+
     @Autowired
     public CommentService(CommentRepository r){this.commentRepository = r;}
 
+    public List<Comment> getAllComments(){
+        return commentRepository.findAll();
+    }
 
-    public List<Comment> getAllComments(){return commentRepository.findAll();}
 
-    public Comment newComment(Comment c){return commentRepository.save(c);}
+    public Comment newComment(Comment c){
+        Comment tmp = new Comment();
+        tmp.setContent(c.getContent());
+        tmp.setAuthor(c.getAuthor());
+        return commentRepository.save(tmp);
+    }
+
 
     public Comment findById(Long id){
         return commentRepository.findById(id)

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Edit comment</title>
+</h:head>
+
+<h:body>
+    <p>Edit comment</p>
+    <h:form>
+    <h:dataTable var="comment" value="#{commentService.comment}">
+        <h:column>
+            <f:facet name="header">Content</f:facet>
+            <h:inputText name="comment" value="#{comment.content}" />
+        </h:column>
+        <h:column>
+        <h:commandButton value="Save" id="save" action="#{commentService.updateComment(comment, comment.id)}"></h:commandButton>
+        </h:column>
+    </h:dataTable>
+    </h:form>
+    <h:button value="Back" outcome="listComment.xhtml"/>
+</h:body>
+</html>

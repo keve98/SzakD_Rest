@@ -4,6 +4,7 @@ import com.example.SzakD_Rest.entities.Blog;
 import com.example.SzakD_Rest.entities.Comment;
 import com.example.SzakD_Rest.services.CommentService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -14,15 +15,16 @@ public class CommentController {
 
 	private final CommentService commentService;
 
-	
 	CommentController(CommentService s){
 		commentService = s;
 	}
 	
 	@GetMapping("/comments")
 	public List<Comment> all(){
+
 		return  commentService.getAllComments();
 	}
+
 
 	@GetMapping("/comments/{id}")
 	Comment findById(@PathVariable Long id){

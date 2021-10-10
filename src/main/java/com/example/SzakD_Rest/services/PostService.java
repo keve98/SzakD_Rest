@@ -9,18 +9,35 @@ import com.example.SzakD_Rest.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 
 @Service
+@ManagedBean(name = "postService", eager = true)
+@SessionScoped
 public class PostService {
 
     private final PostRepository postRepository;
+    public Post post = new Post();
 
     @Autowired
     public PostService(PostRepository r){this.postRepository = r;}
+
+
+    public Post getPost() {
+        return post;
+    }
+
+    public String setPostToEdit(Long id) {
+        this.post = findById(id);
+        return "editPost.xhtml";
+    }
+
+
 
 
     public List<Post> getAllPosts(){return postRepository.findAll();}
@@ -34,7 +51,7 @@ public class PostService {
 
     public void deletePost(Long id){postRepository.deleteById(id); }
 
-    public Post updateBlog(Post newPost, Long id){
+    public Post updatePost(Post newPost, Long id){
         return postRepository.findById(id)
                 .map(post -> {
                     post.setContent(newPost.getContent());

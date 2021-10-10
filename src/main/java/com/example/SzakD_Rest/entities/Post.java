@@ -11,7 +11,7 @@ public class Post extends HasAuthor{
 	private Long Id;
 	private String title;
 	private String content;
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	private List<Comment> comments;
 	
 

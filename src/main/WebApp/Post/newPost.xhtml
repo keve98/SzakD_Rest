@@ -1,0 +1,29 @@
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>New post</title>
+</h:head>
+
+
+<h:body>
+    <p>Add new post</p>
+    <h:form>
+        <h:dataTable id="table" var="post" value="#{postService.post}">
+            <h:column>
+                <f:facet name="header">Title</f:facet>
+                <h:inputText value="#{post.title}" />
+            </h:column>
+            <h:column>
+                <f:facet name = "header">Content</f:facet>
+                <h:inputText value="#{post.content}"></h:inputText>
+            </h:column>
+            <h:column>
+                <h:commandButton value="Save" id="save" action="#{postService.newPost(post)}"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    <h:button value="Back" outcome="listPost.xhtml"/>
+
+</h:body>
+</html>

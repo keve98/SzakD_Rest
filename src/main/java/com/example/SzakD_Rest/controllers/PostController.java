@@ -36,7 +36,7 @@ public class PostController {
 
 	@PutMapping("/posts/{id}")
 	Post updateBlog(@RequestBody Post newPost, @RequestParam Long id){
-		return postService.updateBlog(newPost, id);
+		return postService.updatePost(newPost, id);
 	}
 
 	@DeleteMapping("/posts/{id}")

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Blogs</title>
+    <h:button value="Authors" outcome="#{request.contextPath}/Author/listAuthor.xhtml"/>
+    <h:button value="Comment" outcome="#{request.contextPath}/Comment/listComment.xhtml"/>
+    <h:button value="Post" outcome="#{request.contextPath}/Post/listPost.xhtml"/>
+
+</h:head>
+
+<h:body>
+    <p>Blog: </p>
+        <h:form id="form">
+            <h:button value="New" id="new" outcome="newBlog.xhtml"></h:button>
+            <h:dataTable id="table" var="blog" value="#{blogService.allBlogs}">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputText value="#{blog.id}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Title</f:facet>
+                    <h:outputText value="#{blog.title}" />
+                </h:column>
+                <h:column>
+                    <h:commandButton value="Edit" id="edit" action="#{blogService.setBlogToEdit(blog.id)}" label="Delete" />
+                </h:column>
+                <h:column>
+                    <h:commandButton value="Delete" id="delete" action="#{blogService.deleteBlog(blog.id)}" label="Delete" />
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    <h:button value="Back" outcome="#{request.contextPath}/index.xhtml"/>
+
+</h:body>
+</html>

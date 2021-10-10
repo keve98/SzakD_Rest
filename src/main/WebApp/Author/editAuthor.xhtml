@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Edit author</title>
+</h:head>
+
+<h:body>
+    <p>Edit author</p>
+    <h:form>
+        <h:dataTable var="hasauthor" value="#{hasAuthorService.author}">
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                <h:inputText name="name" value="#{hasauthor.author}" />
+            </h:column>
+            <h:column>
+                <h:commandButton value="Save" id="save" action="#{hasAuthorService.updateHasAuthor(hasauthor, hasauthor.id)}"></h:commandButton>
+            </h:column>
+        </h:dataTable>
+        <h:button value="Back" outcome="listAuthor.xhtml"/>
+    </h:form>
+</h:body>
+</html>
