@@ -21,16 +21,6 @@ public class CommentService{
 
     private final CommentRepository commentRepository;
 
-    public Comment comment = new Comment();
-
-    public String setCommentToEdit(Long id) {
-        this.comment = findById(id);
-        return "editComment.xhtml";
-    }
-
-    public Comment getComment() {
-        return comment;
-    }
 
     @Autowired
     public CommentService(CommentRepository r){this.commentRepository = r;}
@@ -42,8 +32,8 @@ public class CommentService{
 
     public Comment newComment(Comment c){
         Comment tmp = new Comment();
-        tmp.setContent(c.getContent());
-        tmp.setAuthor(c.getAuthor());
+        tmp = c;
+        tmp.setId(null);
         return commentRepository.save(tmp);
     }
 

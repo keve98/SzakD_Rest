@@ -1,5 +1,5 @@
 <html xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
     <title>New blog</title>
@@ -9,13 +9,13 @@
 <h:body>
     <p>Add new blog</p>
     <h:form>
-        <h:dataTable id="table" var="blog" value="#{blogService.blog}">
+        <h:dataTable id="table" var="blog" value="#{JSFData.blog}">
             <h:column>
                 <f:facet name="header">Title</f:facet>
                 <h:inputText value="#{blog.title}" />
             </h:column>
             <h:column>
-                <h:commandButton value="Save" id="save" action="#{blogService.newBlog(blog)}"/>
+                <h:commandButton value="Save" id="save" action="#{JSFData.newBlog(blog)}"/>
             </h:column>
         </h:dataTable>
     </h:form>

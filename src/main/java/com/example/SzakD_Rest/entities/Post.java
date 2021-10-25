@@ -13,9 +13,17 @@ public class Post extends HasAuthor{
 	private String content;
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	private List<Comment> comments;
-	
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	Blog blog;
 
-	
+	public Blog getBlog() {
+		return blog;
+	}
+
+	public void setBlog(Blog blog) {
+		this.blog = blog;
+	}
+
 	public String getTitle() {
 		return title;
 	}

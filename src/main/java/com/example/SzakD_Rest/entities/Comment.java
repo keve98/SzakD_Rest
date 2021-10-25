@@ -14,11 +14,11 @@ public class Comment extends HasAuthor{
 	private Long Id;
 	private String content;
 
+
 	public Comment(){
 		super();
 		content = "";
 	}
-
 	public String getContent() {
 		return content;
 	}

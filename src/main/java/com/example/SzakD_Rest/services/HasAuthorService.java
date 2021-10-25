@@ -18,16 +18,7 @@ import java.util.List;
 public class HasAuthorService {
 
     private final HasAuthorRepository hasAuthorRepository;
-    public HasAuthor author = new HasAuthor();
 
-    public HasAuthor getAuthor() {
-        return author;
-    }
-
-    public String setHasAuthorToEdit(Long id) {
-        this.author = findById(id);
-        return "editAuthor.xhtml";
-    }
 
     @Autowired
     public HasAuthorService(HasAuthorRepository r){this.hasAuthorRepository = r;}
@@ -36,9 +27,8 @@ public class HasAuthorService {
     public List<HasAuthor> getAllHasAuthors(){return hasAuthorRepository.findAll();}
 
     public HasAuthor newHasAuthor(HasAuthor h){
-        HasAuthor tmp = new HasAuthor();
-        tmp.setAuthor(h.getAuthor());
-        return hasAuthorRepository.save(tmp);}
+        return hasAuthorRepository.save(h);
+    }
 
     public HasAuthor findById(Long id){
         return hasAuthorRepository.findById(id)

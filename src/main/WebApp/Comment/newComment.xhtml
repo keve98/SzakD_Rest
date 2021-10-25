@@ -9,17 +9,24 @@
 <h:body>
     <p>Add new comment</p>
 <h:form>
-    <h:dataTable id="table" var="comment" value="#{commentService.comment}">
+    <h:dataTable id="table" var="comment" value="#{JSFData.comment}">
         <h:column>
             <f:facet name="header">Content</f:facet>
             <h:inputText value="#{comment.content}" />
         </h:column>
         <h:column>
-            <f:facet name = "header">Author</f:facet>
-            <h:inputText value="#{comment.author}"></h:inputText>
+            <f:facet name="header">Author</f:facet>
+            <h:inputText value="#{JSFData.authorname}">
+            </h:inputText>
         </h:column>
         <h:column>
-            <h:commandButton value="Save" id="save" action="#{commentService.newComment(comment)}"/>
+            <f:facet name="header">Post</f:facet>
+            <h:selectOneListbox id="listpost" size="3" value="#{JSFData.postid}">
+                <f:selectItems value="#{postService.allPosts}" var="post" itemValue="#{post.id}" itemLabel="#{post.title}"/>
+            </h:selectOneListbox>
+        </h:column>
+        <h:column>
+            <h:commandButton value="Save" id="save" action="#{JSFData.newComment(comment)}"/>
         </h:column>
     </h:dataTable>
     <h:button value="Back" outcome="listComment.xhtml"/>

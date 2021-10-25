@@ -9,13 +9,13 @@
 <h:body>
     <p>Add new author</p>
     <h:form>
-        <h:dataTable id="table" var="hasauthor" value="#{hasAuthorService.author}">
+        <h:dataTable id="table" var="hasauthor" value="#{JSFData.author}">
             <h:column>
                 <f:facet name="header">Name</f:facet>
                 <h:inputText value="#{hasauthor.author}" />
             </h:column>
             <h:column>
-                <h:commandButton value="Save" id="save" action="#{hasAuthorService.newHasAuthor(hasauthor)}"/>
+                <h:commandButton value="Save" id="save" action="#{JSFData.newHasAuthor(hasauthor)}"/>
             </h:column>
         </h:dataTable>
     </h:form>

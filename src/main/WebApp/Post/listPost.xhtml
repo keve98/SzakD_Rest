@@ -36,10 +36,14 @@
                         <h:outputText value="#{post.author}" /><br/>
                 </h:column>
                 <h:column>
-                    <h:commandButton value="Edit" id="edit" action="#{postService.setPostToEdit(post.id)}" label="Delete" />
+                    <f:facet name="header">Blog</f:facet>
+                    <h:outputText value="#{post.blog.title}" />
                 </h:column>
                 <h:column>
-                    <h:commandButton value="Delete" id="delete" action="#{postService.deletePost(post.id)}" label="Delete" />
+                    <h:commandButton value="Edit" id="edit" action="#{JSFData.setPostToEdit(post.id)}" label="Delete" />
+                </h:column>
+                <h:column>
+                    <h:commandButton value="Delete" id="delete" action="#{JSFData.deletePost(post.id)}" label="Delete" />
                 </h:column>
             </h:dataTable>
         </h:form>

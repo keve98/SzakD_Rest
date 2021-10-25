@@ -22,27 +22,19 @@ import java.util.Optional;
 public class PostService {
 
     private final PostRepository postRepository;
-    public Post post = new Post();
 
     @Autowired
     public PostService(PostRepository r){this.postRepository = r;}
 
 
-    public Post getPost() {
-        return post;
-    }
-
-    public String setPostToEdit(Long id) {
-        this.post = findById(id);
-        return "editPost.xhtml";
-    }
-
-
-
-
     public List<Post> getAllPosts(){return postRepository.findAll();}
 
-    public Post newPost(Post p){return postRepository.save(p);}
+    public Post newPost(Post p){
+        Post tmp = new Post();
+        tmp = p;
+        tmp.setId(null);
+        return postRepository.save(tmp);
+    }
 
     public Post findById(Long id){
         return postRepository.findById(id)

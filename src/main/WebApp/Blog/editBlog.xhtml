@@ -10,13 +10,13 @@
 <h:body>
     <p>Edit blog</p>
     <h:form>
-        <h:dataTable var="blog" value="#{blogService.blog}">
+        <h:dataTable var="blog" value="#{JSFData.blog}">
             <h:column>
                 <f:facet name="header">Title</f:facet>
                 <h:inputText name="name" value="#{blog.title}" />
             </h:column>
             <h:column>
-                <h:commandButton value="Save" id="save" action="#{blogService.updateBlog(blog, blog.id)}"></h:commandButton>
+                <h:commandButton value="Save" id="save" action="#{JSFData.updateBlog(blog, blog.id)}"></h:commandButton>
             </h:column>
         </h:dataTable>
         <h:button value="Back" outcome="listBlog.xhtml"/>

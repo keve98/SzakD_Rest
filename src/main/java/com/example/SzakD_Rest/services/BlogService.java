@@ -18,17 +18,6 @@ public class BlogService {
 
     private final BlogRepository blogRepository;
 
-    public Blog blog = new Blog();
-
-    public String setBlogToEdit(Long id) {
-        this.blog = findById(id);
-        return "editBlog.xhtml";
-    }
-
-    public Blog getBlog() {
-        return blog;
-    }
-
     @Autowired
     public BlogService(BlogRepository r){this.blogRepository = r;}
 
@@ -36,8 +25,9 @@ public class BlogService {
 
     public Blog newBlog(Blog b){
         Blog tmp = new Blog();
-        tmp.setTitle(b.getTitle());
-        return blogRepository.save(b);
+        tmp = b;
+        tmp.setId(null);
+        return blogRepository.save(tmp);
     }
 
     public Blog findById(Long id){

@@ -25,10 +25,10 @@
                     <h:outputText value="#{author.author}" />
                 </h:column>
                 <h:column>
-                    <h:commandButton value="Edit" id="edit" action="#{hasAuthorService.setHasAuthorToEdit(author.id)}" label="Delete" />
+                    <h:commandButton value="Edit" id="edit" action="#{JSFData.setHasAuthorToEdit(author.id)}" label="Delete" />
                 </h:column>
                 <h:column>
-                    <h:commandButton value="Delete" id="delete" action="#{hasAuthorService.deleteHasAuthor(author.id)}" label="Delete" />
+                    <h:commandButton value="Delete" id="delete" action="#{JSFData.deleteHasAuthor(author.id)}" label="Delete" />
                 </h:column>
             </h:dataTable>
         </h:form>

@@ -10,7 +10,7 @@
 <h:body>
     <p>Edit post</p>
     <h:form>
-        <h:dataTable var="post" value="#{postService.post}">
+        <h:dataTable var="post" value="#{JSFData.post}">
             <h:column>
                 <f:facet name="header">Title</f:facet>
                 <h:inputText name="name" value="#{post.title}" />
@@ -20,7 +20,17 @@
                 <h:inputText name="name" value="#{post.content}" />
             </h:column>
             <h:column>
-                <h:commandButton value="Save" id="save" action="#{postService.updatePost(post, post.id)}"></h:commandButton>
+                <f:facet name="header">Blog</f:facet>
+                <h:selectOneListbox id="list" size="3" value="#{JSFData.blogid}">
+                    <f:selectItems value="#{blogService.allBlogs}" var="blog" itemValue="#{blog.id}" itemLabel="#{blog.title}"/>
+                </h:selectOneListbox>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Author</f:facet>
+                <h:inputText value="#{JSFData.authorname}"></h:inputText>
+            </h:column>
+            <h:column>
+                <h:commandButton value="Save" id="save" action="#{JSFData.updatePost(post, post.id)}"></h:commandButton>
             </h:column>
         </h:dataTable>
         <h:button value="Back" outcome="listPost.xhtml"/>

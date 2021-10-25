@@ -25,6 +25,9 @@ public class Blog {
 		this.title = "";
 	}
 
+	public void addPost(Post p){
+		posts.add(p);
+	}
 
 	public Long getId() {
 		return Id;

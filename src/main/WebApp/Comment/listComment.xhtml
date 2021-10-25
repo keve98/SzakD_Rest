@@ -26,12 +26,12 @@
                 <f:facet name="header">Author</f:facet>
                 <h:outputText value="#{comment.author}" />
             </h:column>
-        <h:column>
-            <h:commandButton value="Delete" id="delete" action="#{commentService.deleteComment(comment.id)}"/>
-        </h:column>
             <h:column>
-                <h:commandButton value="Edit" id="edit" action="#{commentService.setCommentToEdit(comment.id)}"/>
+                <h:commandButton value="Edit" id="edit" action="#{JSFData.setCommentToEdit(comment.id)}"/>
             </h:column>
+        <h:column>
+            <h:commandButton value="Delete" id="delete" action="#{JSFData.deleteComment(comment.id)}"/>
+        </h:column>
         </h:dataTable>
     </h:form>
     <h:button value="Back" outcome="#{request.contextPath}/index.xhtml"/>

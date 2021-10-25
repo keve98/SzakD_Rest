@@ -10,13 +10,13 @@
 <h:body>
     <p>Edit author</p>
     <h:form>
-        <h:dataTable var="hasauthor" value="#{hasAuthorService.author}">
+        <h:dataTable var="hasauthor" value="#{JSFData.author}">
             <h:column>
                 <f:facet name="header">Name</f:facet>
                 <h:inputText name="name" value="#{hasauthor.author}" />
             </h:column>
             <h:column>
-                <h:commandButton value="Save" id="save" action="#{hasAuthorService.updateHasAuthor(hasauthor, hasauthor.id)}"></h:commandButton>
+                <h:commandButton value="Save" id="save" action="#{JSFData.updateHasAuthor(hasauthor, hasauthor.id)}"></h:commandButton>
             </h:column>
         </h:dataTable>
         <h:button value="Back" outcome="listAuthor.xhtml"/>
