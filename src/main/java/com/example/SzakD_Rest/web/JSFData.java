@@ -37,7 +37,7 @@ public class JSFData {
 
     public Blog blog = new Blog();
     public Comment comment = new Comment();
-    public HasAuthor author = new HasAuthor();
+    public HasAuthor hasAuthor = new HasAuthor();
     public Post post = new Post();
     Long blogid;
     Long postid;
@@ -74,12 +74,12 @@ public class JSFData {
         this.comment = comment;
     }
 
-    public HasAuthor getAuthor() {
-        return author;
+    public HasAuthor getHasAuthor() {
+        return hasAuthor;
     }
 
-    public void setAuthor(HasAuthor author) {
-        this.author = author;
+    public void setHasAuthor(HasAuthor hasAuthor) {
+        this.hasAuthor = hasAuthor;
     }
 
     public Post getPost() {
@@ -126,8 +126,8 @@ public class JSFData {
     }
 
     public String setHasAuthorToEdit(Long id) {
-        this.author = this.hasAuthorService.findById(id);
-        return "editAuthor.xhtml";
+        this.hasAuthor = this.hasAuthorService.findById(id);
+        return "editHasAuthor.xhtml";
     }
 
     public String setPostToEdit(Long id) {

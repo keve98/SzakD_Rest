@@ -10,7 +10,7 @@
 <h:body>
     <p>Edit author</p>
     <h:form>
-        <h:dataTable var="hasauthor" value="#{JSFData.author}">
+        <h:dataTable var="hasauthor" value="#{JSFData.hasAuthor}">
             <h:column>
                 <f:facet name="header">Name</f:facet>
                 <h:inputText name="name" value="#{hasauthor.author}" />
